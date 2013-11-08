@@ -1,9 +1,10 @@
 //Déclaration des différentes classes, il manque à rajouter les attributs, les méthodes...
 
 abstract class Map {
-  def map(i:Int, j:Int):Array[String];
+  def init_map(i:Int, j:Int):Array[String];
   def case_vide(i:Int, j:Int):Bool;
   def type_case(i:Int, j:Int):String;
+  def creer_struct(s:Infrastructure, i:Int, j:Int);  
 }
 
 abstract class Maire {
