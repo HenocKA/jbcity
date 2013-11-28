@@ -1,23 +1,24 @@
 //Déclaration des différentes classes, il manque à rajouter les attributs, les méthodes...
 
 abstract class Map {
-  def map(i:Int, j:Int):Array[String];
-  def case_vide(i:Int, j:Int):Bool;
-  def type_case(i:Int, j:Int):String;
+  def map(x:Int, y:Int):Array[String];
+  def is_empty(i:Int, j:Int):Bool;
+  def what(i:Int, j:Int):String;
 }
 
 abstract class Maire {
-  val budjet:Int;
+  var budget:Int;
 }
 
 abstract class Habitant{
-  val nbr:Int;
+  var nbr:Int;
   //Fonctions pour augmenter ou diminuer le nombre d'habitants
-  def diminue(i:Int);
-  def augmente(i:Int);
+  def decrease(i:Int);
+  def increase(i:Int);
 }
 
-abstract class Ville{
+abstract class City extends Map{
+  var map:Map;
   val name:String;
 }
 
@@ -65,12 +66,13 @@ abstract class Trancon_ferr{
 
 }
 
-abstract class Infrastructure{
-
+trait Infrastructure{
+  def position(): (x:Int, y:Int)
+  
 }
 
 abstract class Transport extends Infrastructure{
-
+  
 }
 
 abstract class Securite extends Infrastructure{
