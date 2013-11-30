@@ -1,4 +1,4 @@
-package com.jbcity.Event
+package com.jbcity.sim.Event
 
 class random_Event {
 	//Déclaration des variables

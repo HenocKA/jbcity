@@ -1,6 +1,6 @@
-package com.jbcity.entity
+package com.jbcity.sim
 
-class habitant{
+class population{
 	var max:Int = 1; //nb max d'habitants possible
 	var nb: Int = 1; // nb d'habitant
 	var sat:Int = 50 // niveau de satisfaction des habitants

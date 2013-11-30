@@ -1,6 +1,6 @@
-package com.jbcity.entity
+package com.jbcity.sim
 
-class infrastructures {
+class infrastructure {
 	var cost:Int;
 	var time:Int;
 	var energy: Int;

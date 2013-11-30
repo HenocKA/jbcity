@@ -1,6 +1,6 @@
-//package com.jbcity.entity
+package com.jbcity.sim
 
-class ville(abs:Int, ord:Int) {
+class city(abs:Int, ord:Int) {
   var energy:Int =0;
   var water:Int = 0;
   var energy_max:Int = 10;
