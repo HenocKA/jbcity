@@ -1,10 +1,10 @@
 package com.jbcity.sim
 
 class city(abs:Int, ord:Int) {
-  var energy:Int =0;
-  var water:Int = 0;
-  var energy_max:Int = 10;
-  var water_max:Int = 10;
+  var energy:float =0;
+  var water:float = 0;
+  var energy_max:float = 10;
+  var water_max:float = 10;
   val map:Array[Array[String]] = Array.ofDim(abs,ord);
   def init() ={ 
     for (i <- 0 to abs)
