@@ -1,6 +1,7 @@
 package com.jbcity.sim
 
-class city(abs:Int, ord:Int) {
+class city(n:String, abs:Int, ord:Int) {
+  val name = n
   var energy=0;
   var water = 0;
   var energy_max = 10;
