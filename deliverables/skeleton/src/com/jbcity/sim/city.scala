@@ -7,12 +7,12 @@ class city(abs:Int, ord:Int) {
   var water_max = 10;
   val map:Array[Array[String]] = Array.ofDim(abs,ord);
   def init() ={ 
-    for (i <- 0 to abs)
-      for (j <- 0 to ord)
-        this.map(i)(j)="";
+    for (i <- 0 to abs-1)
+      for (j <- 0 to ord-1)
+        this.map(i)(j)="emp";
   }
   def isEmpty(i:Int, j:Int)= {
-    if (this.map(i)(j)=="") true else false;  
+    if (this.map(i)(j)=="emp") true else false;  
   }
   def modify_energy (x:Int) = {
 	this.energy += x;
@@ -25,12 +25,21 @@ class city(abs:Int, ord:Int) {
   }
   
   def display(){
-    for (i <- 0 to abs){
-      for (j <- 0 to ord){
+    for (x <- 0 to abs-1)
+      print("    "+x+" ")
+    println("")
+    for (i <- 0 to abs-1){
+      for(x <-0 to abs-2)
+        print(" ----- ")
+      println("")
+      print(i+" ")
+      for (j <- 0 to ord-1){
+    	print(" | ");
         print(this.map(i)(j));
-    	print("| ");
+    	//print("| ");
       }
-    println("");
+      print(" |")
+      println("");
     }
   }	
   def get_impots(x:Int,y:Int){
