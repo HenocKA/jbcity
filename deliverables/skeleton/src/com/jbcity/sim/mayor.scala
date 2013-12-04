@@ -1,9 +1,9 @@
 package com.jbcity.sim
 
-class mayor(n:String, b:Int){
+class mayor(n:String, c:city, b:Int){
 	val name = n;
 	var budget = b;
-	val my_city:city;
+	val my_city = c;
 	def modify_budget (x:Int) = {
 	this.budget += x;
 	}	
