@@ -1,5 +1,5 @@
 package com.jbcity.sim
 
-class infras_transport extends infrastructures {
+class infras_transport extends infrastructure {
 
 }
