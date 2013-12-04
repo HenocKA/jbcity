@@ -10,10 +10,10 @@ class city(n:String, abs:Int, ord:Int) {
   def init() ={ 
     for (i <- 0 to abs-1)
       for (j <- 0 to ord-1)
-        this.map(i)(j)="emp";
+        this.map(i)(j)="\033[30memp\033[0m";
   }
   def isEmpty(i:Int, j:Int)= {
-    if (this.map(i)(j)=="emp") true else false;  
+    if (this.map(i)(j)=="\033[30memp\033[0m") true else false;  
   }
   def modify_energy (x:Int) = {
 	this.energy += x;
