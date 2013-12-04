@@ -21,6 +21,14 @@ class mayor(n:String, c:city, b:Int){
 	  else
 	    i.delete(this,x,y)
 	}
+	
+	def delete(x:Int, y:Int){
+	  if (this.my_city.isEmpty(x,y)) 
+	    println("impossible de détruire à cet endroit")
+	  else
+	    this.my_city.map(x)(y)="\033[30memp\033[0m"
+	}
+	
 	def create(n:network, x:Int, y:Int){
 	  if (this.my_city.isEmpty(x,y)) 
 	    n.create(this,x,y)

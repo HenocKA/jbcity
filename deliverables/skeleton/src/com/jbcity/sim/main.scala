@@ -43,6 +43,20 @@ class partie{
     }
   }
   
+  def delete_inf(inf:infrastructure){
+    println("Entrer ligne puis colonne")
+    try{
+    val x = readInt()
+    val y = readInt()
+    this.mayor.delete(inf,x,y)
+    this.display()
+    } catch {
+        case ex: NumberFormatException => 
+        println("Choix incorrecte!")
+        this.display()
+    }
+  }
+  
   def menu_create(){
     println("1: Infrastructure")
     println("2: Network")
@@ -98,6 +112,20 @@ class partie{
     }
   }
   
+  def menu_delete(){
+    println("Entrer ligne puis colonne")
+    try{
+    val x = readInt()
+    val y = readInt()
+    this.mayor.delete(x,y)
+    this.display()
+    } catch {
+        case ex: NumberFormatException => 
+        println("Choix incorrecte!")
+        this.display()
+    }
+  }
+  
   def menu_destroy(){
     println("1: Infrastructure")
     println("2: Network")
@@ -113,6 +141,31 @@ class partie{
         println("5: Sécurité")
         println("6: Social")
         println("7: Transport")
+        i=readInt()
+        i match {
+          case 1 =>
+          val inf = new infras_commercial()
+          this.delete_inf(inf)
+          case 2 =>
+          val inf = new infras_entertainment()
+          this.delete_inf(inf)
+          case 3 =>
+          val inf = new infras_production()
+          this.delete_inf(inf)
+          case 4 =>
+          val inf = new infras_residential()
+          this.delete_inf(inf)
+          case 5 =>
+          val inf = new infras_security()
+          this.delete_inf(inf)
+          case 6 =>
+          val inf = new infras_social()
+          this.delete_inf(inf)
+          case 7 =>
+          val inf = new infras_transport()
+          this.delete_inf(inf)
+          case _ => this.display()
+    	}	
       case 2 => 
         println("1: Electricité")
         println("2: Water")
@@ -173,7 +226,7 @@ class partie{
     i match {
       case 0 => this.display()
       case 1 => this.menu_create()
-      case 2 => this.menu_destroy()
+      case 2 => this.menu_delete()
       case 3 => this.menu_impots()
       case 4 => this.menu_quit()
       case _ => this.menu()

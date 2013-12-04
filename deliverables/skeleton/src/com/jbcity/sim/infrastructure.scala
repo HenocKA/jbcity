@@ -20,8 +20,12 @@ class infrastructure {
 	  }
 	}
 	def delete (m:mayor, x:Int, y:Int){
-	  
-	  println("Impossible de détruire ici")
+	  if(m.my_city.isEmpty(x,y) || 
+	      m.my_city.map(x)(y)!= this.id)
+	    println("Impossible de détruire ici")
+	  else{
+	    m.my_city.map(x)(y)="\033[30memp\033[0m"
+	  }
 	}
 }
 
