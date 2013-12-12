@@ -1,0 +1,10 @@
+run
+compile main
+compile 
+make
+compile
+run
+ls
+compile
+run
+clean
