@@ -27,8 +27,10 @@ def displayCity(city:City){
   }	
 
 	
-	def display_cell(obj:JBObject): String = obj.getClass.getSimpleName match  {
+	def display_cell(obj:JBObject): String = obj match  {
 	
+	  case null => "\033[30memp\033[0m"
+	  case x => x.getClass.getSimpleName.split("\\$").last match { 
 		case "InfrastructureCommercial" =>  "\033[31mcom\033[0m"
 			
 		case "InfrastructureEntertainment" => "\033[32mloi\033[0m"
@@ -42,7 +44,7 @@ def displayCity(city:City){
     	case "InfrastructureSocial" => "\033[36msoc\033[0m"
 	
 		case "InfrastructureTransport" => "\033[37mtra\033[0m"
-    
-		case _ => "\033[30memp\033[0m"
+	  }
+		
 	}
 }

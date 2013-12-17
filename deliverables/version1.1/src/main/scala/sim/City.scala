@@ -13,7 +13,7 @@ class City(_name:String, _abs:Int, _ord:Int) {
   def init() ={ 
     for (i <- 0 to abs-1)
       for (j <- 0 to ord-1)
-        this.map(i)(j)=new JBObject();
+        this.map(i)(j)=null;
   }
   def isEmpty(i:Int, j:Int):Boolean= {
     if (this.map(i)(j) == null) 

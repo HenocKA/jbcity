@@ -5,7 +5,7 @@ class partie{
 
   var console = new ConsoleDisplay()
   var city = new City("",0,0)
-  var mayor = new Mayor("",city,0)
+  var mayor = new Mayor("",city,10000)
   val hab = new Population()
   
   
