@@ -1,7 +1,9 @@
-package ui
-import sim._
+package main.scala.ui
+import main.scala.sim._
 
 class partie{
+
+  var console = new ConsoleDisplay()
   var city = new City("",0,0)
   var mayor = new Mayor("",city,0)
   val hab = new Population()
@@ -239,7 +241,8 @@ class partie{
     print("\033[2J")
     println("Ville: "+this.city.name+"    "
         +"Maire: "+this.mayor.name)
-    this.city.display();
+     //this.city.display();   
+    console.displayCity(this.city);
     println()
     print("nb_hab: "+hab.nb)
     print("  budget: "+mayor.budget)

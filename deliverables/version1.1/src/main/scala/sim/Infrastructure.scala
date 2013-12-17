@@ -1,4 +1,4 @@
- package sim
+ package main.scala.sim
 
 class Infrastructure extends JBObject  {
 	var id="inf";
@@ -6,25 +6,28 @@ class Infrastructure extends JBObject  {
 	var time=0;
 	var energy=0;
 	var water=0;
+	
 	def create (m:Mayor, x:Int, y:Int){
 	  if (m.budget >= cost 
-	      && m.my_city.energy >= energy 
-	      && m.my_city.water >= water){
-	    m.my_city.map(x)(y)= this.id;
+	      && m.city.energy >= energy 
+	      && m.city.water >= water){
+	   //m.city.map(x)(y)= this.id;
+	    m.city.map(x)(y)= this;
 	    m.modify_budget(-1*this.cost)
-	    m.my_city.modify_energy(-1*this.energy)
-	    m.my_city.modify_water(-1*this.water)
+	    m.city.modify_energy(-1*this.energy)
+	    m.city.modify_water(-1*this.water)
 	  }
 	  else {
 	    println("Impossible de créer cette infrastucture...")
 	  }
 	}
+	
 	def delete (m:Mayor, x:Int, y:Int){
-	  if(m.my_city.isEmpty(x,y) || 
-	      m.my_city.map(x)(y)!= this.id)
+	  if(m.city.isEmpty(x,y) || 
+	      m.city.map(x)(y)!= this.id)
 	    println("Impossible de détruire ici")
 	  else{
-	    m.my_city.map(x)(y)="\033[30memp\033[0m"
+	    m.city.map(x)(y)= null
 	  }
 	}
 }

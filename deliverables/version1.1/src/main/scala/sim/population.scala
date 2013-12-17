@@ -1,4 +1,4 @@
-package sim
+package main.scala.sim
 
 class Population{
 	var max:Int = 1; //nb max d'habitants possible

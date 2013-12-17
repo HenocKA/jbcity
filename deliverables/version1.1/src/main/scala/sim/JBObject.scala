@@ -1,5 +1,6 @@
-package sim
+package main.scala.sim
 
 class JBObject  {
+	
 	
 }

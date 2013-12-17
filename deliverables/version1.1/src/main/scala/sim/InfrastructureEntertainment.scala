@@ -1,4 +1,4 @@
-package sim
+package main.scala.sim
 
 class InfrastructureEntertainment extends Infrastructure{
     this.id = "\033[32mloi\033[0m"

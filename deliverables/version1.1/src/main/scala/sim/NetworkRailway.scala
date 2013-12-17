@@ -1,4 +1,4 @@
-package sim
+package main.scala.sim
 
 class NetworkRailway extends Network{
 
