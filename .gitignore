@@ -1,7 +1,6 @@
-
+.gitignore~
 deliverables/skeleton/#jbcity.scala#
 deliverables/skeleton/src/com/jbcity/.project
 
-deliverables/version1.1/target/.history
-deliverables/version1.1/project/
-deliverables/version1.1/target/
+deliverables/version1.2/project/
+deliverables/version1.2/target/*
