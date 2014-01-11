@@ -67,30 +67,38 @@ class ConsoleGame{
     try{
       i match {
         case 1 => console.displayInfrastructureType()
-          i=readInt()
-          i match {
-            case 1 =>
-              val inf = new InfrastructureCommercial()
-              this.create_inf(inf)
-            case 2 =>
-              val inf = new InfrastructureEntertainment()
-              this.create_inf(inf)
-            case 3 =>
-              val inf = new InfrastructureProduction()
-              this.create_inf(inf)
-            case 4 =>
-              val inf = new InfrastructureResidential()
-              this.create_inf(inf)
-            case 5 =>
-              val inf = new InfrastructureSecurity()
-              this.create_inf(inf)
-            case 6 =>
-              val inf = new InfrastructureSocial()
-              this.create_inf(inf)
-            case 7 =>
-              val inf = new InfrastructureTransport()
-              this.create_inf(inf)
-            case _ => this.display()
+          	println("1: Commerciale")
+          	println("2: divertissement")
+          	println("3: Production")
+          	println("4: Résidentiel")
+          	println("5: Securité")
+          	println("6: Sociale")
+          	println("7: Transport")
+          	
+          	var j=readInt()
+          	j match {
+	            case 1 =>
+	              val inf = new InfrastructureCommercial()
+	              this.create_inf(inf)
+	            case 2 =>
+	              val inf = new InfrastructureEntertainment()
+	              this.create_inf(inf)
+	            case 3 =>
+	              val inf = new InfrastructureProduction()
+	              this.create_inf(inf)
+	            case 4 =>
+	              val inf = new InfrastructureResidential()
+	              this.create_inf(inf)
+	            case 5 =>
+	              val inf = new InfrastructureSecurity()
+	              this.create_inf(inf)
+	            case 6 =>
+	              val inf = new InfrastructureSocial()
+	              this.create_inf(inf)
+	            case 7 =>
+	              val inf = new InfrastructureTransport()
+	              this.create_inf(inf)
+	            case _ => this.display()
           }	
         case 2 => 
           println("1: Electricity")
