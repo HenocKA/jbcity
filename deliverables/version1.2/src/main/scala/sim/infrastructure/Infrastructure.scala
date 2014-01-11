@@ -1,7 +1,7 @@
 package main.scala.sim.infrastructure
 import main.scala.sim._
 
-abstract class Infrastructure extends JBObject  {
+abstract class Infrastructure extends JBObject with Random_Even {
 	var id="inf";
 	var cost=0;
 	var time=0;
@@ -30,6 +30,16 @@ abstract class Infrastructure extends JBObject  {
 	  else{
 	    m.city.map(x)(y)= null
 	  }
+	}
+	
+	/**
+	 * Effets liés à un random even sur l'infrastructure
+	 * Cette méthode est appelé si l'intrastructure doit
+	 * subir des modifications aléatoire
+	 */
+
+	def Even_Destroy (m:Mayor, x:Int, y:Int){
+	  
 	}
 }
 
