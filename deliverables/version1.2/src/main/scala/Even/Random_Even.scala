@@ -19,7 +19,7 @@ trait Random_Even extends Runnable {
   /**
    * Générateur de désastre
    */
-  def generateDisaster: Unit => {
+  def generateDisaster() {
     var r = new scala.util.Random
     var i:Int = r.nextInt(3)
     i match {
