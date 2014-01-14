@@ -1,7 +1,9 @@
 package main.scala.sim.infrastructure
 import main.scala.sim._
+import main.scala.sim.even._
 
-abstract class Infrastructure extends JBObject with Random_Even {
+
+abstract class Infrastructure extends JBObject with RandomEven {
 	var id="inf";
 	var cost=0;
 	var time=0;
@@ -19,26 +21,27 @@ abstract class Infrastructure extends JBObject with Random_Even {
 	    m.city.modify_water(-1*this.water)
 	  }
 	  else {
-	    println("Impossible de créer cette infrastucture...")
+	    println("Impossible de cr√©er cette infrastucture...")
 	  }
 	}
 	
 	def delete (m:Mayor, x:Int, y:Int){
-	  if(m.city.isEmpty(x,y) || 
-	      m.city.map(x)(y)!= this.id)
-	    println("Impossible de détruire ici")
+	  if(m.city.isEmpty(x,y) 
+	  		//||   m.city.map(x)(y)!= this.id
+	  		)
+	    println("Impossible de d√©truire ici")
 	  else{
 	    m.city.map(x)(y)= null
 	  }
 	}
 	
 	/**
-	 * Effets li�s � un random even sur l'infrastructure
-	 * Cette m�thode est appel� si l'intrastructure doit
-	 * subir des modifications al�atoire
+	 * Effets liÈs ‡ un random even sur l'infrastructure
+	 * Cette mÈthode est appelÈ si l'intrastructure doit
+	 * subir des modifications alÈatoire
 	 */
 
-	def Even_Destroy (m:Mayor, x:Int, y:Int){
+	def EvenDestroy (m:Mayor, x:Int, y:Int){
 	  
 	}
 }

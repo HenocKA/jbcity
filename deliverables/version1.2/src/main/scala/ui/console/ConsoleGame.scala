@@ -70,8 +70,8 @@ class ConsoleGame{
           	println("1: Commerciale")
           	println("2: divertissement")
           	println("3: Production")
-          	println("4: R�sidentiel")
-          	println("5: Securit�")
+          	println("4: RÈsidentiel")
+          	println("5: SecuritÈ")
           	println("6: Sociale")
           	println("7: Transport")
           	
@@ -163,7 +163,7 @@ class ConsoleGame{
             case _ => this.display()
           }	
         case 2 => 
-          println("1: Electricité")
+          println("1: Electricit√©")
           println("2: Water")
           println("3: Railway")
         case 0 => println("retour")
@@ -212,9 +212,9 @@ class ConsoleGame{
   }
   
   def menu(){
-    println("1: Création infrastructure")
+    println("1: Cr√©ation infrastructure")
     println("2: Destruction infrastructure")
-    println("3: Récolter impots")
+    println("3: R√©colter impots")
     println("4: Quitter jeu")
     println("0: Retour")
     try{
