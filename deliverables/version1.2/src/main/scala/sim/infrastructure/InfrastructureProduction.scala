@@ -1,9 +1,11 @@
 package main.scala.sim.infrastructure
 
-class InfrastructureProduction extends Infrastructure{
-    this.id = "\033[33mpro\033[0m"
-	this.cost = 100
-	this.time= 10;
-	this.energy=0;
-	this.water=0;
+abstract class InfrastructureProduction extends Infrastructure with Taxes 
+                                           with Maintenance{
+  constructionCost = 35000
+  destructionCost = 750
+  constructionTime = 35
+  energy = 2500
+  water = 3575
 }
+

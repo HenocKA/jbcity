@@ -1,9 +1,16 @@
 package main.scala.sim.infrastructure
 
-class InfrastructureResidential extends Infrastructure {
-    this.id = "\033[34mres\033[0m"
-	this.cost = 150
-	this.time= 10;
-	this.energy=0;
-	this.water=0;
+abstract class InfrastructureResidential extends Infrastructure with Inhabitants
+                                          with Taxes{
+  constructionCost = 200
+  destructionCost = 50
+  constructionTime = 10
+  energy = 100
+  water = 50
+
+  inhabitantsMax = 10
+  randomInhabitants //Random Number of inhabitants
+
+  taxes=10
 }
+class House extends InfrastructureResidential

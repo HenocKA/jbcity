@@ -1,9 +1,18 @@
 package main.scala.sim.infrastructure
 
-class InfrastructureCommercial extends Infrastructure {
-	this.id = "\033[31mcom\033[0m"
-	this.cost = 50
-	this.time= 10;
-	this.energy=0;
-	this.water=0;
+abstract class InfrastructureCommercial extends Infrastructure with Taxes 
+                                           with Employments{
+  constructionCost = 2500 
+  destructionCost = 100
+  constructionTime = 25
+  energy = 100
+  water = 100
+  
+  
+  numEmployment = 50
+  taxes = 250
 }
+
+class McDonalds extends InfrastructureCommercial
+
+
