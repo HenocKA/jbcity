@@ -4,7 +4,7 @@ import main.scala.sim.infrastructure._
 class Mayor(n:String, c:City, b:Int){
 	val name = n;
 	var budget = b;
-	var city = c;
+	var city = c
 	def modify_budget (x:Int) = {
 	this.budget += x;
 	}	
