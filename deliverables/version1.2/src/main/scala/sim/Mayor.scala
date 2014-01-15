@@ -9,45 +9,16 @@ class Mayor(n:String, c:City, b:Int){
 	this.budget += x;
 	}	
 	
-	//différentes actions possibles du maire
-	def create(i:Infrastructure, x:Int, y:Int){
-	  if (this.city.isEmpty(x,y)) 
-	    i.create(this,x,y)
-	  else
-	    println("impossible de construire à cet endroit"); 
+  //Mayor Actions
+	def add(i:JBObject, x:Int, y:Int) :Boolean ={
+            city.add(i,x,y)
 	}
-	def delete(i:Infrastructure, x:Int, y:Int){
-	  if (this.city.isEmpty(x,y)) 
-	    println("impossible de détruire à cet endroit")
-	  else
-	    i.delete(this,x,y)
+        
+	def destroy(x:Int, y:Int) {
+	  city.destroy(x,y)
 	}
-	
-	def delete(x:Int, y:Int):Boolean = {
-	  if (this.city.isEmpty(x,y)) 
-	  	false
-	    //println("impossible de détruire à cet endroit")
-	  else
-	  	true;
-	    //this.city.map(x)(y)="\033[30memp\033[0m"
-	}
-	
-	def create(n:Network, x:Int, y:Int){
-	  if (this.city.isEmpty(x,y)) 
-	    n.create(this,x,y)
-	  else
-	    println("impossible de construire à cet endroit"); 
-	}
-	def delete(n:Network, x:Int, y:Int){
-	  if (this.city.isEmpty(x,y)) 
-	    println("impossible de détruire à cet endroit")
-	  else
-	    n.create(this,x,y)
-	}
-	def get_impots(x:Int, y:Int){
-	  if(this.city.isEmpty(x,y))
-	    println("impossible de récolter des impôts ici")
-	  else
-	    this.city.get_impots(x,y);
+
+	def getTax(x:Int, y:Int) : Int = {
+	  city.getTax (x, y)
 	}
 }
