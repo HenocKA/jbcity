@@ -1,29 +1,30 @@
 package main.scala.sim.infrastructure
 
 
-class InfrastructureFactory {
+object InfrastructureFactory {
+  var listInfrastructures = Vector("McDonalds","SqualesBowlingClub","House")
   def apply (typeInfr:String):Infrastructure = typeInfr match  {
     
     //Infrastructure 
-    case "TownHall" => new TownHall
+    case "TownHall" =>  new TownHall 
 
-    //InfrastructureCommercial
-    case "McDonalds" => new McDonalds
+      //InfrastructureCommercial
+    case "McDonalds" => new McDonalds 
       
-    //InfrastructureEntertainment
-    case "SqualesBowlingClub" => new SqualesBowlingClub
+      //InfrastructureEntertainment
+    case "SqualesBowlingClub" => new SqualesBowlingClub 
     
-    //InfrastructureProduction
+      //InfrastructureProduction
     
       
-    //InfrastructureResidential  
-    case "House" => new House
+      //InfrastructureResidential  
+    case "House" => new House 
     
-    //InfrastructureSecurity
+      //InfrastructureSecurity
 
-    //InfrastructureSocial
+      //InfrastructureSocial
       
-    //InfrastructureTransport
+      //InfrastructureTransport
 
     
   }

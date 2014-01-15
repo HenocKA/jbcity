@@ -1,7 +1,6 @@
 package main.scala.sim.infrastructure
 
-abstract class InfrastructureResidential extends Infrastructure with Inhabitants
-                                          with Taxes{
+abstract class InfrastructureResidential extends Infrastructure with Inhabitants {
   constructionCost = 200
   destructionCost = 50
   constructionTime = 10

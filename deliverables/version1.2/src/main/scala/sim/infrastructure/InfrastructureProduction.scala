@@ -1,6 +1,6 @@
 package main.scala.sim.infrastructure
 
-abstract class InfrastructureProduction extends Infrastructure with Taxes 
+abstract class InfrastructureProduction extends Infrastructure
                                            with Maintenance{
   constructionCost = 35000
   destructionCost = 750

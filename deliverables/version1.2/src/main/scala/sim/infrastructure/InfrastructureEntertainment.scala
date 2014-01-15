@@ -1,6 +1,6 @@
 package main.scala.sim.infrastructure
 
-class InfrastructureEntertainment extends Infrastructure with Taxes 
+class InfrastructureEntertainment extends Infrastructure
                                      with Employments{
   
   constructionCost = 1500

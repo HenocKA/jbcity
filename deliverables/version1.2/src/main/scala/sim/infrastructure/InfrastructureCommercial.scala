@@ -1,6 +1,6 @@
 package main.scala.sim.infrastructure
 
-abstract class InfrastructureCommercial extends Infrastructure with Taxes 
+abstract class InfrastructureCommercial extends Infrastructure 
                                            with Employments{
   constructionCost = 2500 
   destructionCost = 100
