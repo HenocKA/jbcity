@@ -36,7 +36,7 @@ class ConsoleGame{
     try{
       val x = readInt()
       val y = readInt()
-      this.mayor.create(inf,x,y)
+      this.mayor.add(inf,x,y)
       this.display()
     } catch {
       case ex: NumberFormatException => 
@@ -45,12 +45,12 @@ class ConsoleGame{
     }
   }
   
-  def delete_inf(inf:Infrastructure){
+  def delete_inf(){
     println("Enter line and row")
     try{
       val x = readInt()
       val y = readInt()
-      this.mayor.delete(inf,x,y)
+      this.mayor.destroy(x,y)
       this.display()
     } catch {
       case ex: NumberFormatException => 
@@ -66,40 +66,23 @@ class ConsoleGame{
     var i = readInt()
     try{
       i match {
-        case 1 => console.displayInfrastructureType()
-          	println("1: Commerciale")
-          	println("2: divertissement")
-          	println("3: Production")
-          	println("4: RÈsidentiel")
-          	println("5: SecuritÈ")
-          	println("6: Sociale")
-          	println("7: Transport")
-          	
-          	var j=readInt()
-          	j match {
-	            case 1 =>
-	              val inf = new InfrastructureCommercial()
-	              this.create_inf(inf)
-	            case 2 =>
-	              val inf = new InfrastructureEntertainment()
-	              this.create_inf(inf)
-	            case 3 =>
-	              val inf = new InfrastructureProduction()
-	              this.create_inf(inf)
-	            case 4 =>
-	              val inf = new InfrastructureResidential()
-	              this.create_inf(inf)
-	            case 5 =>
-	              val inf = new InfrastructureSecurity()
-	              this.create_inf(inf)
-	            case 6 =>
-	              val inf = new InfrastructureSocial()
-	              this.create_inf(inf)
-	            case 7 =>
-	              val inf = new InfrastructureTransport()
-	              this.create_inf(inf)
-	            case _ => this.display()
-          }	
+        case 1 =>{ 
+            console.displayInfrastructures()
+            
+            var infras =  InfrastructureFactory.listInfrastructures
+            
+            var j = -1
+            
+            while (j == -1) {
+              j=readInt()
+              if (j < 0 && j >= infras.length)
+                j = -1
+            }
+            
+            val inf = InfrastructureFactory (infras(j))
+            create_inf (inf)
+          }
+          
         case 2 => 
           println("1: Electricity")
           println("2: Water")
@@ -120,7 +103,7 @@ class ConsoleGame{
     try{
       val x = readInt()
       val y = readInt()
-      this.mayor.delete(x,y)
+      this.mayor.destroy(x,y)
       this.display()
     } catch {
       case ex: NumberFormatException => 
@@ -136,32 +119,9 @@ class ConsoleGame{
     var i = readInt()
     try{
       i match {
-        case 1 => console.displayInfrastructureType()
+        case 1 => console.displayInfrastructures()
           i=readInt()
-          i match {
-            case 1 =>
-              val inf = new InfrastructureCommercial()
-              this.delete_inf(inf)
-            case 2 =>
-              val inf = new InfrastructureEntertainment()
-              this.delete_inf(inf)
-            case 3 =>
-              val inf = new InfrastructureProduction()
-              this.delete_inf(inf)
-            case 4 =>
-              val inf = new InfrastructureResidential()
-              this.delete_inf(inf)
-            case 5 =>
-              val inf = new InfrastructureSecurity()
-              this.delete_inf(inf)
-            case 6 =>
-              val inf = new InfrastructureSocial()
-              this.delete_inf(inf)
-            case 7 =>
-              val inf = new InfrastructureTransport()
-              this.delete_inf(inf)
-            case _ => this.display()
-          }	
+          delete_inf()
         case 2 => 
           println("1: Electricit√©")
           println("2: Water")
@@ -184,7 +144,7 @@ class ConsoleGame{
       println("Choisir infrastructure (ligne puis colonne)")
       var i = readInt()
       var j = readInt()
-      this.mayor.get_impots(i,j)
+      this.mayor.getTax(i,j)
     } catch {
       case ex: NumberFormatException => 
         println("Choix incorrecte!")

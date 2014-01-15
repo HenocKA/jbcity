@@ -50,14 +50,10 @@ class ConsoleDisplay{
 		
   }
   
-  def displayInfrastructureType(){
-    println("1: Commercial")
-    println("2: Entertainment")
-    println("3: Production")
-    println("4: Residential")
-    println("5: Security")
-    println("6: Social")
-    println("7: Transport")
+  def displayInfrastructures(){
+    var infras = InfrastructureFactory.listInfrastructures
+    for (i <- 0 to infras.length-1)
+      println(i + " : " + infras(i))
   }
   
   def displayIncorrectChoice(){
