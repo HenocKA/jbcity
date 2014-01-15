@@ -11,11 +11,11 @@ class ConsoleGame{
   
   
   def init(){
-    println("City Name : ")
+    print("City Name : ")
     val city_name = readLine()
     this.city = new City(city_name,10,10)
     city.init();
-    println("Mayor Name : ")
+    print("Mayor Name : ")
     val mayor_name = readLine()
     this.mayor = new Mayor(mayor_name, city, 1000)
     this.display()
@@ -123,7 +123,7 @@ class ConsoleGame{
           i=readInt()
           delete_inf()
         case 2 => 
-          println("1: Electricit√©")
+          println("1: Electricity")
           println("2: Water")
           println("3: Railway")
         case 0 => println("retour")
@@ -134,7 +134,7 @@ class ConsoleGame{
       }
     } catch {
       case ex: NumberFormatException => 
-        println("Choix incorrecte!")
+        println("Incorrect choice !")
         this.display()
     }
   }
@@ -172,11 +172,11 @@ class ConsoleGame{
   }
   
   def menu(){
-    println("1: Cr√©ation infrastructure")
-    println("2: Destruction infrastructure")
-    println("3: R√©colter impots")
-    println("4: Quitter jeu")
-    println("0: Retour")
+    println("1: Create Infrastructure")
+    println("2: Destroy Infrastructure")
+    println("3: Collect Taxes")
+    println("4: Quit")
+    println("0: Back")
     try{
       var i = readInt()
       i match {
@@ -194,15 +194,20 @@ class ConsoleGame{
   
   def display(){
     print("\033[2J")
-    println("Ville: "+this.city.name+"    "
-            +"Maire: "+this.mayor.name)
+    print("   " + "Mayor: " +this.mayor.name + "\t")
+    print("City: "+this.city.name + "\t")
+    println("Money: " + mayor.budget)
+    
+    print("   " + "Population: " + hab.nb + "\t")    
+    print("Energy: " + city.energy + "\t")
+    println("Water: " + city.water)
+    
+    print("   " + "Happiness: " + " %" + "\t")
+    print("Criminality: " + " 0%" + "\t" )
+    println("Pollution: " + " 0%" + "\n")
     //this.city.display();   
     console.displayCity(this.city);
     println()
-    print("nb_hab: "+hab.nb)
-    print("  budget: "+mayor.budget)
-    print("  energy: "+city.energy)
-    println("  water: "+city.water)
   }
 
   def launch(){
@@ -249,6 +254,10 @@ class ConsoleGame{
       } 	
     }
   
+  }
+  
+  def caption () {
+//Legend of the console 
   }
 }
 
