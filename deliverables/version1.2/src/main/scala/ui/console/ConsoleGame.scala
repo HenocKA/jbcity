@@ -5,7 +5,7 @@ import main.scala.sim.infrastructure._
 class ConsoleGame{
 
   var console = new ConsoleDisplay()
-  var city = new City("",0,0)
+  var city = new City("",10,10)
   var mayor = new Mayor("",city,10000)
   val hab = new Population()
   
@@ -256,8 +256,5 @@ class ConsoleGame{
   
   }
   
-  def caption () {
-//Legend of the console 
-  }
 }
 
