@@ -74,6 +74,20 @@ class ConsoleGame{
     }
   }
   
+    def delete_net(){
+    println("Enter line and row")
+    try{
+      val x = readInt()
+      val y = readInt()
+      this.mayor.destroy(x,y)
+      this.display()
+    } catch {
+      case ex: NumberFormatException => 
+        println("Incorrect Choice !")
+        this.display()
+    }
+  }
+  
   def menu_create(){
     println("1: Infrastructure")
     println("2: Network")

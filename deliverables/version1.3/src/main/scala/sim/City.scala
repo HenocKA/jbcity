@@ -1,8 +1,9 @@
 package main.scala.sim
+import main.scala.sim.even._
 
 import main.scala.sim.infrastructure._
 
-class City(_name:String, _abs:Int, _ord:Int) {
+class City(_name:String, _abs:Int, _ord:Int) extends RandomEven {
   var abs = _abs
   var ord = _ord
   val name = _name
@@ -64,5 +65,29 @@ class City(_name:String, _abs:Int, _ord:Int) {
   
   def destroy(x: Int, y: Int)= {
     map(x)(y) = null
+  }
+  
+  /**
+   * Lance une Èpidemie
+   * numberPeople est le nombre de personne 
+   * qui sera toucher par l'Èpidemie
+   */
+  override def epidemic(numberPeople:Int){
+    
+  }
+  /**
+   * Lance d'un dasastre
+   * numberInfrastructure est le nombre de d'instrastructure  
+   * qui sera toucher par le desestre
+   */
+  override def disaster (numberInfrastructure:Int){
+    
+  }
+  /**
+   * Lance autre attaque
+   * level aui sera le viveau de dangÈrisitÈ de l'attaque
+   */
+  override def OtherAttack (level:Int){
+    
   }
 }
