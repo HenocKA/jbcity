@@ -2,6 +2,7 @@ package main.scala.ui.ConsoleUI
 
 import main.scala.sim._
 import main.scala.sim.infrastructure._
+import main.scala.sim.network._
 
 class ConsoleDisplay {
   var numLetters = 3 //num of caratees
@@ -51,6 +52,13 @@ class ConsoleDisplay {
     case inf: InfrastructureTransport     => "\033[37m" + simpleName(inf, numChar) + "\033[0m"
 
     case inf: Infrastructure              => simpleName(inf, numChar)
+    
+    case inf: NetworkElectricity    => "\033[31m" + simpleName(inf, numChar) + "\033[0m"
+    case inf: NetworkRailway => "\033[32m" + simpleName(inf, numChar) + "\033[0m"
+    case inf: NetworkRoad    => "\033[33m" + simpleName(inf, numChar) + "\033[0m"
+    case inf: NetworkWater   => "\033[34m" + simpleName(inf, numChar) + "\033[0m"
+
+    case inf: Infrastructure              => simpleName(inf, numChar)
     case null                             => "\033[30m" + simpleName(null, numChar) + "\033[0m"
   }
 
@@ -71,6 +79,7 @@ class ConsoleDisplay {
         name + " " * (numChar - name.length)
     }
   }
+ 
 
   def displayInfrastructures() {
     var infras = InfrastructureFactory.listInfrastructures

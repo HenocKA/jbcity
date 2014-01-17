@@ -25,8 +25,6 @@ object InfrastructureFactory {
       //InfrastructureSocial
       
       //InfrastructureTransport
-
-    
   }
 }
 

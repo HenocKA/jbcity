@@ -1,5 +1,5 @@
-package main.scala.sim
+package main.scala.sim.network
 
-class NetworkRoadSection {
+class NetworkRoadSection extends NetworkRoad {
 
 }

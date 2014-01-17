@@ -1,6 +1,7 @@
 package main.scala.ui.ConsoleUI
 import main.scala.sim._
 import main.scala.sim.infrastructure._
+import main.scala.sim.network._
 
 class ConsoleGame{
 
@@ -37,6 +38,20 @@ class ConsoleGame{
       val x = readInt()
       val y = readInt()
       this.mayor.add(inf,x,y)
+      this.display()
+    } catch {
+      case ex: NumberFormatException => 
+        println("Incorrect Choice !")
+        this.display()
+    }
+  }
+  
+  def create_net(net:Network){
+    println("Enter line and row")
+    try{
+      val x = readInt()
+      val y = readInt()
+      this.mayor.add(net,x,y)
       this.display()
     } catch {
       case ex: NumberFormatException => 
@@ -85,8 +100,21 @@ class ConsoleGame{
           
         case 2 => 
           println("1: Electricity")
-          println("2: Water")
-          println("3: Railway")
+          println("2: Railway")
+          println("3: Road")
+          println("4: Water")
+          var Netw =  NetworkFactory.listNetwork
+            
+            var j = -1
+            
+            while (j == -1) {
+              j=readInt()
+              if (j < 0 && j >= Netw.length)
+                j = -1
+            }
+            
+            val net = NetworkFactory (Netw(j))
+            create_net (net)
         case 0 => this.display()
         case _ => 
           this.menu_create()

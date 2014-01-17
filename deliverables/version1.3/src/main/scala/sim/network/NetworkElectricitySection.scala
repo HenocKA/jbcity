@@ -1,5 +1,5 @@
-package main.scala.sim
+package main.scala.sim.network
 
-class NetworkElectricitySection {
+class NetworkElectricitySection extends NetworkElectricity{
 
 }
