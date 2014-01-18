@@ -1,6 +1,6 @@
 package main.scala.sim
 
-class JBObject  {
+class JBObject  extends scala.Serializable {
 	
 	
 }

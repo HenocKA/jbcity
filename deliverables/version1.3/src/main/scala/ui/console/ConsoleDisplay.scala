@@ -1,10 +1,10 @@
-package main.scala.ui.ConsoleUI
+package main.scala.ui.console
 
 import main.scala.sim._
 import main.scala.sim.infrastructure._
 import main.scala.sim.network._
 
-class ConsoleDisplay {
+class ConsoleDisplay extends scala.Serializable{
   var numLetters = 3 //num of caratees
   var lineCaption = ""
   var caption = ""

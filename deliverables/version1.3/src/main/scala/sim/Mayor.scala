@@ -1,7 +1,7 @@
 package main.scala.sim
 import main.scala.sim.infrastructure._
 
-class Mayor(n:String, c:City, b:Int){
+class Mayor(n:String, c:City, b:Int) extends scala.Serializable{
 	val name = n;
 	var budget = b;
 	var city = c

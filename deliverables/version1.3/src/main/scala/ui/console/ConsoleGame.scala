@@ -1,14 +1,18 @@
-package main.scala.ui.ConsoleUI
+package main.scala.ui.console
+import scala.util.Marshal
+import scala.io.Source
+import scala.collection.immutable
+import java.io._
 import main.scala.sim._
 import main.scala.sim.infrastructure._
 import main.scala.sim.network._
 
-class ConsoleGame{
+class ConsoleGame extends scala.Serializable{
 
   var console = new ConsoleDisplay()
   var city = new City("",10,10)
   var mayor = new Mayor("",city,10000)
-  val hab = new Population()
+  var hab = new Population()
   
   
   def init(){
@@ -23,11 +27,34 @@ class ConsoleGame{
   }
   
   def load(){
+  /*  var in = new FileInputStream("city.log")
+    var bytes = Stream.continually(in.read).takeWhile(-1 !=).map(_.toByte).toArray
+    var ville :City = Marshal.load(bytes)
+    this.city = ville
+    //this.city = Marshal.load[City](bytes)
+
+    in = new FileInputStream("mayor.log")
+    bytes = Stream.continually(in.read).takeWhile(-1 !=).map(_.toByte).toArray     
+    //this.mayor = Marshal.load[Mayor](bytes)
     
+    in = new FileInputStream("hab.log")
+    bytes = Stream.continually(in.read).takeWhile(-1 !=).map(_.toByte).toArray
+//    this.hab = Marshal.load(bytes)
+
+    this.display()*/
   }
   
   def save(){
     //sauvegarde
+    var out = new FileOutputStream("city.log")
+    out.write(Marshal.dump(this.city))
+    out.close
+    out = new FileOutputStream("mayor.log")
+    out.write(Marshal.dump(this.mayor))
+    out.close
+    out = new FileOutputStream("hab.log")
+    out.write(Marshal.dump(this.hab))
+    out.close
     //exit
     sys.exit();
   }
@@ -204,9 +231,17 @@ class ConsoleGame{
           this.save()
         case 2 => println("Fermeture de la session");
           sys.exit()
-        case _ => println("1: Enregistrer et Quitter (non fonctionnel)")
+        case _ => 
+	  println("1: Enregistrer et Quitter (non fonctionnel)")
           println("2: Quitter sans enregistrer")
           i=readInt()
+	  i match {
+	    case 1 => println("Enregistrement en cours...");
+	    this.save();
+	    case _ =>
+	    sys.exit();
+	  }
+
       }
     } catch {
       case ex: NumberFormatException => this.menu_quit()

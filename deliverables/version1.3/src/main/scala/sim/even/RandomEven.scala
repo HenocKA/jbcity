@@ -4,7 +4,7 @@ package main.scala.sim.even
  * GÈnÈrateur d'evenement
  */
 
-trait RandomEven extends Runnable {
+trait RandomEven extends Runnable{
   val rateRandom = 1000
   val misfortuneVal = 13
   
@@ -52,4 +52,5 @@ trait RandomEven extends Runnable {
   def OtherAttack(level:Int){
     
   }
+
 }

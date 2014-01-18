@@ -3,7 +3,7 @@ import main.scala.sim.even._
 
 import main.scala.sim.infrastructure._
 
-class City(_name:String, _abs:Int, _ord:Int) extends RandomEven {
+class City(_name:String, _abs:Int, _ord:Int) extends scala.Serializable with RandomEven {
   var abs = _abs
   var ord = _ord
   val name = _name
