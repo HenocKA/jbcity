@@ -4,10 +4,12 @@ import scala.io.Source
 import scala.collection.immutable
 import java.io._
 import main.scala.sim._
+import main.scala.sim.even._
 import main.scala.sim.infrastructure._
 import main.scala.sim.network._
+import scala.concurrent.ops._
 
-class ConsoleGame extends scala.Serializable{
+class ConsoleGame extends scala.Serializable with RandomEven{
 
   var console = new ConsoleDisplay()
   var city = new City("",10,10)
@@ -23,7 +25,21 @@ class ConsoleGame extends scala.Serializable{
     print("Mayor Name : ")
     val mayor_name = readLine()
     this.mayor = new Mayor(mayor_name, city, 1000)
+    //event()
     this.display()
+  }
+
+  override def epidemic(arg:Int){
+    var r = new scala.util.Random
+    this.hab.nb -= r.nextInt(this.hab.nb)
+  }
+
+  //Fonction pour le lancement des fonctions aléatoires 
+  //pour les évènements par un autre thread que le principal
+  def event(){
+    spawn{
+      this.run()
+    }
   }
   
   def load(){
