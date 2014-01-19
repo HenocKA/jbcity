@@ -349,6 +349,7 @@ class ConsoleGame extends scala.Serializable with RandomEven{
         sys.exit()
     }
     while (true){
+      println("Enter m ou menu pour afficher le menu svp !")
       var s = readLine()
       if (s=="menu" || s=="m"){
         //print("\033[2J")
