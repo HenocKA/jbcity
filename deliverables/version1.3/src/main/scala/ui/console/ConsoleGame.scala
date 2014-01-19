@@ -106,6 +106,7 @@ class ConsoleGame extends scala.Serializable with RandomEven{
     }
   }
   
+  
   def create_net(net:Network){
     println("Enter line and row")
     try{
@@ -187,7 +188,7 @@ class ConsoleGame extends scala.Serializable with RandomEven{
                 j = -1
             }
             
-            val net = NetworkFactory (Netw(j))
+            val net = NetworkFactory (Netw(j-1))
             create_net (net)
         case 0 => this.display()
         case _ => 

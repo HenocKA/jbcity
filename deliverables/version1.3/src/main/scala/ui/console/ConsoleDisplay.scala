@@ -53,10 +53,10 @@ class ConsoleDisplay extends scala.Serializable{
 
     case inf: Infrastructure              => simpleName(inf, numChar)
     
-    case inf: NetworkElectricity    => "\033[31m" + simpleName(inf, numChar) + "\033[0m"
-    case inf: NetworkRailway => "\033[32m" + simpleName(inf, numChar) + "\033[0m"
-    case inf: NetworkRoad    => "\033[33m" + simpleName(inf, numChar) + "\033[0m"
-    case inf: NetworkWater   => "\033[34m" + simpleName(inf, numChar) + "\033[0m"
+    case inf: NetworkElectricity    => "\033[31m" + simpleNameNet(inf, numChar) + "\033[0m"
+    case inf: NetworkRailway => "\033[32m" + simpleNameNet(inf, numChar) + "\033[0m"
+    case inf: NetworkRoad    => "\033[33m" + simpleNameNet(inf, numChar) + "\033[0m"
+    case inf: NetworkWater   => "\033[34m" + simpleNameNet(inf, numChar) + "\033[0m"
 
     case inf: Infrastructure              => simpleName(inf, numChar)
     case null                             => "\033[30m" + simpleName(null, numChar) + "\033[0m"
@@ -73,6 +73,18 @@ class ConsoleDisplay extends scala.Serializable{
       " " * numChar
     else {
       val name = obj.getClass.getSimpleName
+      if (name.length >= numChar)
+        name.substring(0, numChar)
+      else
+        name + " " * (numChar - name.length)
+    }
+  }
+  
+  def simpleNameNet(obj: Network, numChar: Int): String = {
+    if (obj == null )
+      " " * numChar
+    else {
+      val name = obj.getname
       if (name.length >= numChar)
         name.substring(0, numChar)
       else
