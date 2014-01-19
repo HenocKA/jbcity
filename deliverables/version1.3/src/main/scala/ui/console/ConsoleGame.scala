@@ -25,13 +25,30 @@ class ConsoleGame extends scala.Serializable with RandomEven{
     print("Mayor Name : ")
     val mayor_name = readLine()
     this.mayor = new Mayor(mayor_name, city, 1000)
-    //event()
     this.display()
+    //event()
   }
-
+  
+  // Lance une epidemie, le nombre de personnes touchées
+  // est aléatoirement calculé
   override def epidemic(arg:Int){
     var r = new scala.util.Random
     this.hab.nb -= r.nextInt(this.hab.nb)
+  }
+
+  // Un desastre provoque la destruction 
+  // aléatoire de #arg infrastructures
+  override def disaster(arg:Int){
+    var r = new scala.util.Random
+    var nb = arg
+    while(nb>0){
+      var abs = r.nextInt(this.city.abs)
+      var ord = r.nextInt(this.city.ord)
+      if(this.city.map(abs)(ord)!=null){
+	this.city.destroy(abs,ord)
+	nb -= 1
+      }
+    }
   }
 
   //Fonction pour le lancement des fonctions aléatoires 
@@ -244,9 +261,10 @@ class ConsoleGame extends scala.Serializable with RandomEven{
       var i = readInt()
       i match {
         case 1 => println("Enregistrement en cours..."); 
-          this.save()
+          this.save();
+	  exit
         case 2 => println("Fermeture de la session");
-          sys.exit()
+          sys.exit(); exit
         case _ => 
 	  println("1: Enregistrer et Quitter (non fonctionnel)")
           println("2: Quitter sans enregistrer")

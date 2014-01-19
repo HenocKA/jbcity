@@ -8,13 +8,13 @@ trait RandomEven extends Runnable{
   val rateRandom = 1000
   val misfortuneVal = 13
   
-    def run() {
-	    while (true) {
-	      var r = new scala.util.Random
-	      if(r.nextInt(rateRandom) == misfortuneVal)
-	        generateDisaster
-	    }
+  def run() {
+    while (true) {
+      var r = new scala.util.Random
+      if(r.nextInt(rateRandom) == misfortuneVal)
+	generateDisaster()
     }
+  }
   
   /**
    * GÈnÈrateur de dÈsastre
@@ -23,10 +23,10 @@ trait RandomEven extends Runnable{
     var r = new scala.util.Random
     var i:Int = r.nextInt(3)
     i match {
-        case 0 => this.epidemic(r.nextInt(1000000))
-        case 1 => this.disaster(r.nextInt(1000000))
-        case _ => this.OtherAttack(r.nextInt(3))
-      }
+      case 0 => this.epidemic(r.nextInt(1000000))
+      case 1 => this.disaster(r.nextInt(1000000))
+      case _ => this.OtherAttack(r.nextInt(3))
+    }
   }
   
   /**
