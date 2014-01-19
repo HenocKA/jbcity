@@ -8,5 +8,5 @@ class NetworkRailway extends Network with EmploymentsNetwork {
   water = 100
   
   numEmployment = 50
-
+  override def getname():String = "---"
 }

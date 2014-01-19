@@ -8,5 +8,5 @@ class NetworkRoad extends Network with EmploymentsNetwork {
   water = 100
   
   numEmployment = 5
-
+  override def getname():String = "+++"
 }
