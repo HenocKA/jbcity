@@ -1,8 +1,9 @@
 package main.scala.sim.network
 import main.scala.sim._
 import main.scala.sim.even._
+import main.scala.sim.infrastructure._
 
-class Network extends JBObject {
+abstract class Network extends JBObject with Maintenance {
   
   var constructionCost = 1000 
   var destructionCost = 100
@@ -10,14 +11,9 @@ class Network extends JBObject {
   var energy = 100
   var water = 100
   
-	def create(m:Mayor, x:Int, y:Int){
-	  return;
-	}
+  maintenanceCost = 10 //by day
+	
   def getname():String = "***"
   
 }
 
-// Entretien des batiments
-trait EmploymentsNetwork {
-  var numEmployment = 20 //by day
-}

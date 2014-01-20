@@ -53,7 +53,7 @@ trait Maintenance {
   var maintenanceCost = 10 //by day
 }
 
-// Entretien des batiments
+// Nombre d'Emplois créés par l'infrastructure
 trait Employments {
   var numEmployment = 50 //by day
 }

@@ -58,7 +58,6 @@ class ConsoleDisplay extends scala.Serializable{
     case inf: NetworkRoad    => "\033[33m" + simpleNameNet(inf, numChar) + "\033[0m"
     case inf: NetworkWater   => "\033[34m" + simpleNameNet(inf, numChar) + "\033[0m"
 
-    case inf: Infrastructure              => simpleName(inf, numChar)
     case null                             => "\033[30m" + simpleName(null, numChar) + "\033[0m"
   }
 
