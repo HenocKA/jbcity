@@ -165,8 +165,12 @@ class ConsoleGame extends scala.Serializable with RandomEven{
             
             while (j == -1) {
               j=readInt()
-              if (j < 0 && j >= infras.length)
+              if (j < 0 || j >= infras.length){
+                 println("Incorrect Choice !")
+                console.displayInfrastructures()
                 j = -1
+              }
+                
             }
             
             val inf = InfrastructureFactory (infras(j))
@@ -349,7 +353,7 @@ class ConsoleGame extends scala.Serializable with RandomEven{
         sys.exit()
     }
     while (true){
-      println("Enter m ou menu pour afficher le menu svp !")
+      println("Enter m or menu")
       var s = readLine()
       if (s=="menu" || s=="m"){
         //print("\033[2J")

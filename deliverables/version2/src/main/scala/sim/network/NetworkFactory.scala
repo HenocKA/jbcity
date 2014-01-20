@@ -2,30 +2,16 @@ package main.scala.sim.network
 
 
 object NetworkFactory {
-  var listNetwork = Vector("***","---","+++","~~~")
+  var listNetwork = Vector("Electricity","Railway","Road","Water")
   def apply (typeInfr:String):Network = typeInfr match  {
     
-    //Infrastructure 
-    case "***" =>  new NetworkElectricity 
+    case "Electricity" =>  new NetworkElectricity //"***"
 
-      //InfrastructureCommercial
-    case "---" => new NetworkRailway 
-      
-      //InfrastructureEntertainment
-    case "+++" => new NetworkRoad 
-    
-      //InfrastructureProduction
-    
-      
-      //InfrastructureResidential  
-    case "~~~" => new NetworkWater 
-    
-      //InfrastructureSecurity
+    case "Railway" => new NetworkRailway //"---"
 
-      //InfrastructureSocial
-      
-      //InfrastructureTransport
-    
+    case "Road" => new NetworkRoad //"+++"
+
+    case "Water" => new NetworkWater //"~~~"
   }
 }
 

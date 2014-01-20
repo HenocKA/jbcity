@@ -3,12 +3,12 @@ import main.scala.sim._
 import main.scala.sim.even._
 import scala.util.Random
 
-abstract class Infrastructure extends JBObject {
-  var constructionCost = 1000 
-  var destructionCost = 100
-  var constructionTime = 0
-  var energy = 100
-  var water = 100
+abstract class Infrastructure extends JBObjectConstructed {
+  constructionCost = 1000 
+  destructionCost = 100
+  constructionTime = 0
+  energy = 100
+  water = 100
         
   var taxes = 10 //Impôts
   
@@ -21,7 +21,6 @@ abstract class Infrastructure extends JBObject {
   def increaseTaxes = {taxes += taxes} 
   def increaseTaxes (percent: Int) = {taxes += taxes*percent} 
 }
-
 
 //Habitants
 trait Inhabitants {
