@@ -12,8 +12,10 @@ class City(_name:String, _abs:Int, _ord:Int) extends scala.Serializable with Ran
   var energy_max = 10
   var water_max = 10
   var map:Array[Array[JBObject]] = Array.ofDim(abs,ord)
+  var modif = new updateInhabitants
   
   def init() ={ 
+    modif.start();
     for (i <- 0 to abs-1)
       for (j <- 0 to ord-1)
         this.map(i)(j)=null;
@@ -90,4 +92,25 @@ class City(_name:String, _abs:Int, _ord:Int) extends scala.Serializable with Ran
   override def OtherAttack (level:Int){
     
   }
+  
+  class updateInhabitants extends Thread{
+  
+  override def run() {
+    while (true) {
+     Thread sleep 1000
+      for (i <- 0 to abs-1)
+    	  for (j <- 0 to ord-1)
+    		  if (map(i)(j) != null){
+    			  map(i)(j) match {
+    			  case x:InfrastructureResidential => 
+    			  case _ => 
+    			  }
+    		  }
+        
+      //var r = new scala.util.Random
+      //if(r.nextInt(rateRandom) == misfortuneVal)
+    }
+  }
 }
+}
+
