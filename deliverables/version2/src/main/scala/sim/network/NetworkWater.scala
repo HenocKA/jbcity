@@ -8,5 +8,4 @@ class NetworkWater extends Network{
   water = 100
   
   maintenanceCost = 5 //by day
-  override def getname():String = "~~~"
 }

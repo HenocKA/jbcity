@@ -42,7 +42,7 @@ class ConsoleDisplay extends scala.Serializable{
     clearCaption()
   }
   
-   def getClassNameWithColor(obj: JBObject, numChar: Int): String = obj match {
+   def getClassNameWithColor(obj: JBObject, numChar: Int, symbol:Boolean = false): String = obj match {
     case inf: InfrastructureCommercial    => "\033[31m" + simpleName(inf, numChar) + "\033[0m"
     case inf: InfrastructureEntertainment => "\033[32m" + simpleName(inf, numChar) + "\033[0m"
     case inf: InfrastructureProduction    => "\033[33m" + simpleName(inf, numChar) + "\033[0m"
@@ -53,23 +53,26 @@ class ConsoleDisplay extends scala.Serializable{
 
     case inf: Infrastructure              => simpleName(inf, numChar)
     
-    case inf: NetworkElectricity    => "\033[31m" + simpleNameNet(inf, numChar) + "\033[0m"
-    case inf: NetworkRailway => "\033[32m" + simpleNameNet(inf, numChar) + "\033[0m"
-    case inf: NetworkRoad    => "\033[33m" + simpleNameNet(inf, numChar) + "\033[0m"
-    case inf: NetworkWater   => "\033[34m" + simpleNameNet(inf, numChar) + "\033[0m"
+    case net: NetworkElectricity    => "\033[31m" + simpleName(net, numChar,symbol) + "\033[0m"
+    case net: NetworkRailway => "\033[32m" + simpleName(net, numChar, symbol) + "\033[0m"
+    case net: NetworkRoad    => "\033[33m" + simpleName(net, numChar, symbol) + "\033[0m"
+    case net: NetworkWater   => "\033[34m" + simpleName(net, numChar, symbol) + "\033[0m"
 
-    case null                             => "\033[30m" + simpleName(null, numChar) + "\033[0m"
+    case null => "\033[30m" + simpleName(null, numChar) + "\033[0m"
   }
 
   def displayCell(obj: JBObject): String =  {
     if (obj != null)
      addLineCaption(obj)
-    getClassNameWithColor(obj, numLetters)
+    getClassNameWithColor(obj, numLetters, true)
   }
 
-  def simpleName(obj: JBObject, numChar: Int): String = {
+  def simpleName(obj: JBObject, numChar: Int, symbol:Boolean = false): String = {
     if (obj == null )
       " " * numChar
+    else if(symbol) {
+      getNetSymbol(obj, numChar)
+    }
     else {
       val name = obj.getClass.getSimpleName
       if (name.length >= numChar)
@@ -79,16 +82,13 @@ class ConsoleDisplay extends scala.Serializable{
     }
   }
   
-  def simpleNameNet(obj: Network, numChar: Int): String = {
-    if (obj == null )
-      " " * numChar
-    else {
-      val name = obj.getname
-      if (name.length >= numChar)
-        name.substring(0, numChar)
-      else
-        name + " " * (numChar - name.length)
-    }
+  def getNetSymbol(obj: JBObject, numChar: Int): String = obj match {
+    case _: NetworkElectricity    => "*" * numChar
+    case _: NetworkRailway => "-" * numChar
+    case _: NetworkRoad    => "+" * numChar
+    case _: NetworkWater   => "~" * numChar
+    
+    case _ => " " * numChar
   }
  
 
