@@ -93,7 +93,7 @@ class City(_name:String, _abs:Int, _ord:Int) extends scala.Serializable with Ran
     
   }
   
-  class updateInhabitants extends Thread{
+  class updateInhabitants extends Thread with scala.Serializable{
   
   override def run() {
     while (true) {

@@ -10,22 +10,27 @@ import main.scala.sim.network._
 import scala.concurrent.ops._
 
 class ConsoleGame extends scala.Serializable with RandomEven{
-
+  var i = 0;
+  var imax = 1;
   var console = new ConsoleDisplay()
-  var city = new City("",10,10)
-  var mayor = new Mayor("",city,10000)
-  var hab = new Population()
+  var cities:Array[City] = Array.ofDim(50)
+  //var city = cities(0);
+  var mayors: Array[Mayor] = Array.ofDim(50)
+  //var mayor = mayors(0)
+  var habs : Array[Population] = Array.ofDim(50)
+  //var hab = habs(0)
   
   
   def init(){
     print("City Name : ")
     val city_name = readLine()
-    this.city = new City(city_name,10,10)
-    city.init();
+    cities(i) = new City(city_name,10,10)
+    cities(i).init();
     print("Mayor Name : ")
     val mayor_name = readLine()
-    this.mayor = new Mayor(mayor_name, city, 1000)
-    this.display()
+    mayors(i) = new Mayor(mayor_name, cities(i), 1000)
+    habs(i) = new Population()
+    this.display(this.i)
     //event()
   }
   
@@ -33,7 +38,7 @@ class ConsoleGame extends scala.Serializable with RandomEven{
   // est aléatoirement calculé
   override def epidemic(arg:Int){
     var r = new scala.util.Random
-    this.hab.nb -= r.nextInt(this.hab.nb)
+    this.habs(i).nb -= r.nextInt(this.habs(i).nb)
   }
 
   // Un desastre provoque la destruction 
@@ -42,10 +47,10 @@ class ConsoleGame extends scala.Serializable with RandomEven{
     var r = new scala.util.Random
     var nb = arg
     while(nb>0){
-      var abs = r.nextInt(this.city.abs)
-      var ord = r.nextInt(this.city.ord)
-      if(this.city.map(abs)(ord)!=null){
-	this.city.destroy(abs,ord)
+      var abs = r.nextInt(cities(i).abs)
+      var ord = r.nextInt(cities(i).ord)
+      if(cities(i).map(abs)(ord)!=null){
+	cities(i).destroy(abs,ord)
 	nb -= 1
       }
     }
@@ -59,7 +64,7 @@ class ConsoleGame extends scala.Serializable with RandomEven{
     }
   }
   
-  def load(){
+  def load(i:Int){
   /*  var in = new FileInputStream("city.log")
     var bytes = Stream.continually(in.read).takeWhile(-1 !=).map(_.toByte).toArray
     var ville :City = Marshal.load(bytes)
@@ -73,23 +78,27 @@ class ConsoleGame extends scala.Serializable with RandomEven{
     in = new FileInputStream("hab.log")
     bytes = Stream.continually(in.read).takeWhile(-1 !=).map(_.toByte).toArray
 //    this.hab = Marshal.load(bytes)
-
-    this.display()*/
+*/
+    this.display(this.i)
+    
   }
   
-  def save(){
+  def save(i:Int){
     //sauvegarde
-    var out = new FileOutputStream("city.log")
-    out.write(Marshal.dump(this.city))
+    //var city = this.cities(i)
+    //var mayor = this.mayors(i)
+    //var hab = this.habs(i)
+    var out = new FileOutputStream("cities.log")
+    out.write(Marshal.dump(cities))
     out.close
-    out = new FileOutputStream("mayor.log")
-    out.write(Marshal.dump(this.mayor))
+    out = new FileOutputStream("mayors.log")
+    out.write(Marshal.dump(mayors))
     out.close
-    out = new FileOutputStream("hab.log")
-    out.write(Marshal.dump(this.hab))
+    out = new FileOutputStream("habs.log")
+    out.write(Marshal.dump(habs))
     out.close
     //exit
-    sys.exit();
+    //sys.exit();
   }
   
   def create_inf(inf:Infrastructure){
@@ -97,12 +106,12 @@ class ConsoleGame extends scala.Serializable with RandomEven{
     try{
       val x = readInt()
       val y = readInt()
-      this.mayor.add(inf,x,y)
-      this.display()
+      this.mayors(i).add(inf,x,y)
+      this.display(i)
     } catch {
       case ex: NumberFormatException => 
         println("Incorrect Choice !")
-        this.display()
+        this.display(i)
     }
   }
   
@@ -112,12 +121,12 @@ class ConsoleGame extends scala.Serializable with RandomEven{
     try{
       val x = readInt()
       val y = readInt()
-      this.mayor.add(net,x,y)
-      this.display()
+      this.mayors(i).add(net,x,y)
+      this.display(this.i)
     } catch {
       case ex: NumberFormatException => 
         println("Incorrect Choice !")
-        this.display()
+        this.display(this.i)
     }
   }
   
@@ -126,12 +135,12 @@ class ConsoleGame extends scala.Serializable with RandomEven{
     try{
       val x = readInt()
       val y = readInt()
-      this.mayor.destroy(x,y)
-      this.display()
+      this.mayors(i).destroy(x,y)
+      this.display(this.i)
     } catch {
       case ex: NumberFormatException => 
         println("Incorrect Choice !")
-        this.display()
+        this.display(this.i)
     }
   }
   
@@ -140,14 +149,23 @@ class ConsoleGame extends scala.Serializable with RandomEven{
     try{
       val x = readInt()
       val y = readInt()
-      this.mayor.destroy(x,y)
-      this.display()
+      this.mayors(i).destroy(x,y)
+      this.display(this.i)
     } catch {
       case ex: NumberFormatException => 
         println("Incorrect Choice !")
-        this.display()
+        this.display(this.i)
     }
   }
+  
+// Créer une nouvelle ville avec un nouveau maire
+  def menu_new(){
+    this.imax +=1
+    this.save(this.i)
+    this.i += 1
+    this.init();
+  }
+
   
   def menu_create(){
     println("1: Infrastructure")
@@ -194,14 +212,14 @@ class ConsoleGame extends scala.Serializable with RandomEven{
             
             val net = NetworkFactory (Netw(j-1))
             create_net (net)
-        case 0 => this.display()
+        case 0 => this.display(this.i)
         case _ => 
           this.menu_create()
       }
     } catch {
       case ex: NumberFormatException => 
         println("Choix incorrecte!")
-        this.display()
+        this.display(this.i)
     }
   }
   
@@ -210,12 +228,12 @@ class ConsoleGame extends scala.Serializable with RandomEven{
     try{
       val x = readInt()
       val y = readInt()
-      this.mayor.destroy(x,y)
-      this.display()
+      this.mayors(i).destroy(x,y)
+      this.display(this.i)
     } catch {
       case ex: NumberFormatException => 
         println("Choix incorrecte!")
-        this.display()
+        this.display(this.i)
     }
   }
   
@@ -242,7 +260,7 @@ class ConsoleGame extends scala.Serializable with RandomEven{
     } catch {
       case ex: NumberFormatException => 
         println("Incorrect choice !")
-        this.display()
+        this.display(this.i)
     }
   }
   
@@ -251,11 +269,11 @@ class ConsoleGame extends scala.Serializable with RandomEven{
       println("Choisir infrastructure (ligne puis colonne)")
       var i = readInt()
       var j = readInt()
-      this.mayor.getTax(i,j)
+      this.mayors(this.i).getTax(i,j)
     } catch {
       case ex: NumberFormatException => 
         println("Choix incorrecte!")
-        this.display()
+        this.display(this.i)
     }
   }
   
@@ -266,7 +284,7 @@ class ConsoleGame extends scala.Serializable with RandomEven{
       var i = readInt()
       i match {
         case 1 => println("Enregistrement en cours..."); 
-          this.save();
+          this.save(this.i); sys.exit()
 	  exit
         case 2 => println("Fermeture de la session");
           sys.exit(); exit
@@ -276,7 +294,7 @@ class ConsoleGame extends scala.Serializable with RandomEven{
           i=readInt()
 	  i match {
 	    case 1 => println("Enregistrement en cours...");
-	    this.save();
+	    this.save(this.i); sys.exit()
 	    case _ =>
 	    sys.exit();
 	  }
@@ -292,26 +310,53 @@ class ConsoleGame extends scala.Serializable with RandomEven{
     println("2: Destroy Infrastructure")
     println("3: Collect Taxes")
     println("4: Quit")
+    println("5: Change city")
     println("0: Back")
     try{
       var i = readInt()
       i match {
-        case 0 => this.display()
+        case 0 => this.display(this.i)
         case 1 => this.menu_create()
         case 2 => this.menu_delete()
         case 3 => this.menu_impots()
         case 4 => this.menu_quit()
+	case 5 => this.display_cities()
         case _ => this.menu()
       }
     } catch {
-      case ex: NumberFormatException => this.display()
+      case ex: NumberFormatException => this.display(this.i)
     }
   }
+
+  def display_cities(){
+    for (j <- 0 to this.imax-1){
+      println("("+j+")"+" City : " + this.cities(j).name + 
+	      " Mayor : " + this.mayors(i).name +
+	      " Population : "+ this.habs(i).nb )
+    }
+    try{
+      var k = readInt()
+      if (k<this.imax && k>=0){
+	this.i = k
+	this.load(k)
+      }
+      else {
+	println("Veuillez entrer un entier supérieur à 0 et inférieur à "+this.imax)
+	this.display(this.i)
+      }
+    } catch {
+      case ex: NumberFormatException => this.display(0)
+    }
+  }
+
   
-  def display(){
+  def display(i:Int){
+    var city = this.cities(i)
+    var mayor = this.mayors(i)
+    var hab = this.habs(i)
     print("\033[2J")
-    print("   " + "Mayor: " +this.mayor.name + "\t")
-    print("City: "+this.city.name + "\t")
+    print("   " + "Mayor: " +mayor.name + "\t")
+    print("City: "+city.name + "\t")
     println("Money: " + mayor.budget)
     
     print("   " + "Population: " + hab.nb + "\t")    
@@ -322,7 +367,7 @@ class ConsoleGame extends scala.Serializable with RandomEven{
     print("Criminality: " + " 0%" + "\t" )
     println("Pollution: " + " 0%" + "\n")
     //this.city.display();   
-    console.displayCity(this.city);
+    console.displayCity(city);
     println()
   }
 
@@ -339,7 +384,7 @@ class ConsoleGame extends scala.Serializable with RandomEven{
       }		
       else{
         if (i==2)
-          p.load()
+          p.load(this.i)
         else {
           println("Choix possible: 1 ou 2")
           println("Fermeture...")
@@ -349,8 +394,8 @@ class ConsoleGame extends scala.Serializable with RandomEven{
     } catch {
       case ex: NumberFormatException => 
         println("Choix possible: 1 ou 2")
-        println("Fermeture...")
-        sys.exit()
+      println("Fermeture...")
+      sys.exit()
     }
     while (true){
       println("Enter m or menu")
@@ -366,12 +411,15 @@ class ConsoleGame extends scala.Serializable with RandomEven{
         if (s=="q" || s=="quit"){
           p.menu_quit()
         }	
-        else
-          println("quit (or q) or menu (or m)")
-      } 	
+        else {
+	  if (s=="n" || s=="N")
+	    p.menu_new()
+	  else 
+            println("quit (or q) or menu (or m)")
+	} 	
+      }
+      
     }
-  
-  }
-  
+  } 
 }
 
