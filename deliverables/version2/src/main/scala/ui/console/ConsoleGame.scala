@@ -359,7 +359,7 @@ class ConsoleGame extends scala.Serializable with RandomEven{
     print("City: "+city.name + "\t")
     println("Money: " + mayor.budget)
     
-    print("   " + "Population: " + hab.nb + "/" + hb.max"\t")    
+    print("   " + "Population: " + hab.nb + "/" + hab.max + "\t")    
     print("Energy: " + city.energy + "\t")
     println("Water: " + city.water)
     

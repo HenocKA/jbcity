@@ -1,7 +1,7 @@
 package main.scala.sim.infrastructure
 
 abstract class InfrastructureProduction extends Infrastructure
-                                           with Maintenance with Employements
+                                           with Maintenance with Employments
 
 
 class CarbonFactory extends InfrastructureProduction{

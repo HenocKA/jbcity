@@ -25,13 +25,13 @@ object InfrastructureFactory {
     case "Hotel" => new Hotel
 
       //InfrastructureSecurity
-     case "Police" => new 
+     case "Police" => new Police
       
       //InfrastructureSocial
       case "University" => new University
       
       //InfrastructureTransport
-      case "Airport" => new 
+      case "Airport" => new Airport
   }
 }
 
