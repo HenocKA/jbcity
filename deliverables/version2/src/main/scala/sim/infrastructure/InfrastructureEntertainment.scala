@@ -1,7 +1,9 @@
 package main.scala.sim.infrastructure
 
 class InfrastructureEntertainment extends Infrastructure
-                                     with Employments{
+                                     with Employments
+
+class SqualesBowlingClub extends InfrastructureEntertainment{
   
   constructionCost = 1500
   destructionCost = 350
@@ -11,7 +13,6 @@ class InfrastructureEntertainment extends Infrastructure
     
   numEmployment=79
   taxes = 600 
+  numEmployment = 50
     
 }
-
-class SqualesBowlingClub extends InfrastructureEntertainment

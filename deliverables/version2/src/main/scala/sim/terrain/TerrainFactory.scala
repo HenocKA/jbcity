@@ -2,7 +2,7 @@ package main.scala.sim.terrain
 
 
 object TerrainFactory {
-  var listTerrain = Vector("Electricity","Railway","Road","Water")
+  var listTerrain = Vector("Mountain","Valley","Lake","Grass")
   
   def apply (typeTerr:String):Terrain = typeTerr match  {
     

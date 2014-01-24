@@ -1,7 +1,9 @@
 package main.scala.sim.infrastructure
 
 abstract class InfrastructureCommercial extends Infrastructure 
-                                           with Employments{
+                                           with Employments
+
+class McDonalds extends InfrastructureCommercial{
   constructionCost = 2500 
   destructionCost = 100
   constructionTime = 25
@@ -12,7 +14,5 @@ abstract class InfrastructureCommercial extends Infrastructure
   numEmployment = 50
   taxes = 250
 }
-
-class McDonalds extends InfrastructureCommercial
 
 

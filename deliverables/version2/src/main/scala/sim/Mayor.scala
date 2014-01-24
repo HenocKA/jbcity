@@ -12,6 +12,7 @@ class Mayor(n:String, c:City, b:Int) extends scala.Serializable{
   //Mayor Actions
 	def add(i:JBObject, x:Int, y:Int) :Boolean ={
             city.add(i,x,y)
+            
 	}
         
 	def destroy(x:Int, y:Int) {
